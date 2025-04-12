@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>轻风BOOM的秘密基地 ✨</title>
+    <meta name="description"
+        content="欢迎来到 轻风BOOM 的小窝，进来看看吧~ 😉">
+    <meta name="keywords" content="轻风BOOM, 个人主页, 可爱, 博客, 技术">
+    <link rel="stylesheet" type="text/css" href="./css/FiraCode.css">
+    <link rel="stylesheet" type="text/css" href="./css/nutssss.css">
+    <link rel="icon" href="./favicon.ico">
+</head>
+
+<body>
+    <!-- 添加移动端公告栏 -->
+    <div class="mobile-notice">
+        ✨ 欢迎访问 <span class="highlight-name">轻风BOOM</span> 的小窝 ✨
+    </div>
+
+    <div class="notification-bar">
+        🎀 欢迎来到 <span class="highlight-name">轻风BOOM</span> 的小窝呀~ (◍˃ᴗ˂◍)✨
+        <span class="close-btn">×</span>
+    </div>
+    
+    <!-- Page Loader -->
+    <div id="page-loader">
+        <div class="spinner"></div>
+        <p id="loader-message"></p> <!-- 移除 display:none -->
+    </div>
+    <!-- Verification Overlay Removed -->
+    <div id="box" style="display: none;"> <!-- Initially hide main content -->
+        <!-- 个人资料卡片 -->
+        <div class="meBox">
+            <!-- 头像 -->
+            <div class="headPhoto"></div>
+            <!-- 介绍 -->
+            <div class="meBox-title">
+                <p>是轻风BOOM</span>呀~</p>
+                <div class="fg"></div>
+            </div>
+            <div class="meBox-text">
+                <p>一只努力翻身的咸鱼 <img src="./img/fish.png" alt="咸鱼" style="width: 20px; vertical-align: middle;"></p>
+                <p>喜欢打球🏸，也爱捣鼓电脑💻</p>
+                <p>是瞎折腾浪费时间的小能手🥇</p>
+                <p>最爱冰激凌啦~ <img src="./img/002.png" alt="冰激凌" style="width: 15px; vertical-align: middle;"></p>
+            </div>
+        </div>
+
+        <!-- 伪终端介绍 -->
+        <div id="cmdBox">
+            <!-- 第一个终端 -->
+            <div class="cmd">
+                <!-- 三个按钮 -->
+                <div class="click">
+                    <div class="red"></div>
+                    <div class="yellow"></div>
+                    <div class="green"></div>
+                </div>
+                <!-- 顶部标题 -->
+                <div class="title">
+                    <span>轻风BOOM的小黑窗~ 📟</span>
+                </div>
+                <!-- 终端内文字 -->
+                <div class="cmdText">
+                    <!-- Hitokoto命令 -->
+                    <div class="cmd-block">
+                        <div class="cmd-input"></div>
+                        <div class="cmd-output">
+                            <div id="hitokoto_container">
+                                <span id="hitokoto_loading"></span>
+                                <p id="hitokoto_text"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- History命令 -->
+                    <div class="cmd-block">
+                        <div class="cmd-input"></div>
+                        <div class="cmd-output">
+                            <div id="history_today_section">
+                                <span id="history_loading"></span>
+                                <span id="history_error" style="display: none; color: #ff5f56;"></span>
+                                <ul id="history_list" style="display: none;"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Date命令 -->
+                    <div class="cmd-block">
+                        <div class="cmd-input"></div>
+                        <div class="cmd-output">
+                            <p>现在是~ <span id="current_time"></span></p>
+                        </div>
+                    </div>
+                    
+                    <!-- Cat命令 -->
+                    <div class="cmd-block">
+                        <div class="cmd-input"></div>
+                        <div class="cmd-output">
+                            <p>对电脑超好奇，喜欢自己学各种有趣的东西！🤓</p>
+                            <p>会一点点网页和 C#，最喜欢动手解决各种小问题~🔧</p>
+                            <p>也超喜欢玩硬件，树莓派是我的心头好！🍓</p>
+                            <p>在这条路上，我还是个小萌新啦~ 🌱</p>
+                            <p>我知道前面会有好多挑战，但是！</p>
+                            <p>在我看来~</p>
+                            <p>没有什么问题是试一试不能解决哒，不行就多试几次！(๑•̀ㅂ•́)و✧</p>
+                            <p>就算看起来很难，也要鼓起勇气往前冲鸭！🚀</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 待输入命令行 -->
+                    <div class="cmd-block waiting-input" style="opacity: 0;">
+                        <div class="cmd-input-waiting">
+                            <span style="color: rgb(0, 190, 0);">root@127.0.0.1</span>
+                            <span style="color: blue;">~</span>
+                            <span style="color: rgb(88, 89, 92);">$ </span>
+                            <input type="text" class="cmd-input-field" autocomplete="off" spellcheck="false">
+                        </div>
+                        <div class="cmd-output" style="display: none;">
+                            <p style="color: #666; font-style: italic;">茫茫人海，多么幸运遇见你 ✨</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 版权信息 -->
+    <div id="copyright-notice">
+        <p>🏡 <span class="highlight-name">轻风BOOM</span>的秘密小屋 | 用 ❤️ 搭建 | 努力发电中...😊</p>
+        <span class="load-time"></span>
+    </div>
+    <script>
+      const startTime = Date.now(); // Record start time
+      const totalLoaderDuration = 2000; // Total duration is 2 seconds
+      const greetingDuration = 1500; // Greeting shows for 1.5 seconds
+      // const greetingAppearDelay = 500; // Removed delay for greeting
+      const fadeDuration = 300; // Generic fade duration for elements
+      const contentAnimationDelay = 100; // Delay after loader starts fading before content starts animating
+      const flipDuration = 600; // Matches CSS transition for transform (0.6s)
+
+      // 添加终端动画相关代码
+      function sleep(ms) {
+          return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      async function typeText(element, text, speed = 50) {
+          let index = 0;
+          while (index < text.length) {
+              element.textContent += text.charAt(index);
+              index++;
+              await sleep(speed);
+          }
+          return element;
+      }
+
+      async function animateTerminal() {
+          const cmdBlocks = document.querySelectorAll('.cmd-block:not(.waiting-input)');
+          const waitingInput = document.querySelector('.waiting-input');
+          const commands = [
+              {
+                  prefix: '<span style="color: rgb(0, 190, 0);">root@127.0.0.1</span><span style="color: blue;">~</span>',
+                  command: ' hitokoto'
+              },
+              {
+                  prefix: '<span style="color: rgb(0, 190, 0);">root@127.0.0.1</span><span style="color: blue;">~</span>',
+                  command: ' history_today'
+              },
+              {
+                  prefix: '<span style="color: rgb(0, 190, 0);">root@127.0.0.1</span><span style="color: blue;">~</span>',
+                  command: ' date'
+              },
+              {
+                  prefix: '<span style="color: rgb(0, 190, 0);">root@127.0.0.1</span><span style="color: blue;">~</span>',
+                  command: ' cat /me.txt'
+              }
+          ];
+          
+          // 隐藏等待输入的命令行
+          if (waitingInput) {
+              waitingInput.style.opacity = '0';
+          }
+          
+          for (let i = 0; i < cmdBlocks.length; i++) {
+              const block = cmdBlocks[i];
+              const cmdInput = block.querySelector('.cmd-input');
+              const cmdOutput = block.querySelector('.cmd-output');
+              
+              // 显示命令块
+              block.style.opacity = '1';
+              
+              // 命令输入动画
+              cmdInput.innerHTML = commands[i].prefix;
+              await sleep(100);
+              await typeText(document.createElement('span'), commands[i].command, 30).then(span => {
+                  cmdInput.appendChild(span);
+              });
+              await sleep(300);
+              
+              // 显示输出
+              cmdOutput.style.opacity = '0';
+              cmdOutput.style.display = 'block';
+              await sleep(100);
+              cmdOutput.style.transition = 'opacity 0.3s';
+              cmdOutput.style.opacity = '1';
+              
+              // 在开始下一个命令之前等待
+              await sleep(800);
+          }
+          
+          // 所有命令执行完后显示等待输入的命令行
+          await sleep(300);
+          if (waitingInput) {
+              waitingInput.style.transition = 'opacity 0.3s';
+              waitingInput.style.opacity = '1';
+              // 自动聚焦输入框
+              const inputField = waitingInput.querySelector('.cmd-input-field');
+              if (inputField) {
+                  inputField.focus();
+              }
+          }
+      }
+
+      // 在页面加载完成后开始动画
+      window.addEventListener('load', () => {
+          // 在现有的加载完成事件中，content 显示后调用
+          const content = document.getElementById('box');
+          const observer = new MutationObserver((mutations) => {
+              mutations.forEach((mutation) => {
+                  if (mutation.target.classList.contains('content-visible')) {
+                      animateTerminal();
+                      observer.disconnect();
+                  }
+              });
+          });
+          
+          observer.observe(content, { 
+              attributes: true, 
+              attributeFilter: ['class'] 
+          });
+      });
+
+      // --- Set Bing Daily Image as Background ---
+      const bingImageUrl = 'https://t.alcy.cc/fj'; // Changed API URL
+      try {
+        // Get the existing gradient style from CSS (or define it here if needed)
+        const gradient = 'linear-gradient(to left, rgba(255, 0, 149, 0.2), rgba(0, 247, 255, 0.2))';
+        // Combine gradient and the new image URL directly
+        document.body.style.backgroundImage = `${gradient}, url(${bingImageUrl})`;
+        // Ensure other background properties are set (redundant if already in CSS but safe)
+        document.body.style.backgroundRepeat = 'no-repeat';
+        document.body.style.backgroundAttachment = 'fixed';
+        document.body.style.backgroundSize = 'cover';
+      } catch (error) {
+          console.error('设置必应背景图失败:', error);
+          // Fallback or error handling if needed
+      }
+
+      // --- Hitokoto Fetch ---
+      const hitokotoText = document.getElementById('hitokoto_text');
+      const hitokotoLoading = document.getElementById('hitokoto_loading');
+
+      fetch('https://v1.hitokoto.cn')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok for Hitokoto');
+          }
+          return response.json();
+        })
+        .then(data => {
+          hitokotoLoading.style.display = 'none'; // Hide spinner
+          hitokotoText.innerText = data.hitokoto + ' —— ' + data.from;
+          hitokotoText.style.display = 'inline'; // Show text
+        })
+        .catch(error => {
+          console.error('获取一言失败:', error);
+          hitokotoLoading.style.display = 'none'; // Hide spinner
+          hitokotoText.innerText = '呜呜，一言加载失败了... T_T';
+          hitokotoText.style.display = 'inline'; // Show error
+        });
+
+      // --- History Today Fetch ---
+      const historyList = document.getElementById('history_list');
+      const historyLoading = document.getElementById('history_loading');
+      const historyError = document.getElementById('history_error');
+      const historyApiUrl = 'https://cn.apihz.cn/api/zici/today.php?id=88888888&key=88888888'; // Final API URL with key
+
+      fetch(historyApiUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok for History Today');
+          }
+          return response.json();
+        })
+        .then(data => {
+          historyLoading.style.display = 'none'; // Hide spinner
+          // Processing the specific single-event format: { code: 200, title: "...", y: "..." }
+          if (data && data.code === 200 && data.title && data.y) {
+            historyList.innerHTML = ''; // Clear previous items (though only one item expected)
+            const li = document.createElement('li');
+            // Use the provided fields 'y' and 'title'
+            li.textContent = `[${data.y}] ${data.title}`;
+            historyList.appendChild(li);
+            historyList.style.display = 'block'; // Show list
+          } else {
+             // Handle cases where code is not 200 or expected fields are missing
+             console.error('Received unexpected data format from History API:', data);
+             throw new Error('Invalid or unsuccessful response from History API');
+          }
+        })
+        .catch(error => {
+          console.error('获取历史上的今天失败:', error);
+          historyLoading.style.display = 'none'; // Hide spinner
+          historyError.textContent = '哎呀，历史上的今天走丢了... T_T';
+          historyError.style.display = 'inline'; // Show error message
+        });
+
+      // --- Real-time Clock ---
+      const timeElement = document.getElementById('current_time');
+
+      function formatTime(num) {
+        // Helper function to pad single digits with a leading zero
+        return num < 10 ? '0' + num : num;
+      }
+
+      function updateTime() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = formatTime(now.getMonth() + 1); // Months are 0-based
+        const day = formatTime(now.getDate());
+        const hours = formatTime(now.getHours());
+        const minutes = formatTime(now.getMinutes());
+        const seconds = formatTime(now.getSeconds());
+        const dateTimeString = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        // Check if timeElement exists before setting textContent
+        if (timeElement) {
+            timeElement.textContent = dateTimeString;
+        } else {
+            console.error("Element with id 'current_time' not found.");
+            // Optionally, clear the interval if the element is missing
+            // clearInterval(timeInterval); // Need to store interval ID for this
+        }
+      }
+
+      // Store interval ID to potentially clear it later if needed
+      // const timeInterval = setInterval(updateTime, 1000);
+      updateTime(); // Initial call to display time immediately
+      setInterval(updateTime, 1000); // Update time every second
+
+      // --- Simple Verification Gate Removed ---
+
+      // --- Page Loader Logic ---
+      window.addEventListener('load', () => {
+          const loader = document.getElementById('page-loader');
+          const spinner = loader.querySelector('.spinner');
+          const loaderMessage = document.getElementById('loader-message');
+          const content = document.getElementById('box');
+          
+          // 立即设置并显示问候语
+          const currentHour = new Date().getHours();
+          let greeting = "嘿，你好呀~ ✨"; // Default cute greeting
+          if (currentHour >= 5 && currentHour < 9) {
+              greeting = "早安！新的一天也要元气满满鸭！☀️";
+          } else if (currentHour >= 9 && currentHour < 12) {
+              greeting = "上午好~ 今天也要加油搬砖呀！💪";
+          } else if (currentHour >= 12 && currentHour < 14) {
+              greeting = "午安！干饭时间到，冲鸭！🍚";
+          } else if (currentHour >= 14 && currentHour < 18) {
+              greeting = "下午茶时间到~ 摸鱼也要快乐呀！☕";
+          } else if (currentHour >= 18 && currentHour < 23) {
+              greeting = "晚上好~ 月亮不睡我不睡！🌙";
+          } else {
+              greeting = "夜深啦，快去和周公约会吧~ 😴";
+          }
+          
+          if (loaderMessage) {
+              loaderMessage.textContent = greeting;
+              loaderMessage.classList.add('visible');
+          }
+
+          const loadTime = Date.now();
+          const elapsedTime = loadTime - startTime;
+          
+          // 添加加载时间显示
+          const loadTimeElement = document.querySelector('.load-time');
+          if (loadTimeElement) {
+              const timeColor = elapsedTime <= 1000 ? '#52c41a' : 
+                               elapsedTime <= 2000 ? '#faad14' : 
+                               '#ff4d4f';
+              const speedTip = elapsedTime <= 1000 ? '٩(๑>◡<๑)۶ 哇！网速超快，光速加载！✈️' :
+                               elapsedTime <= 2000 ? '(◍•ᴗ•◍) 网速还不错哦~继续保持！✨' :
+                               '(｡•́︿•̀｡) 网速有点慢呢，需要来点魔法加速~✨';
+              loadTimeElement.innerHTML = `
+                  ⚡加载耗时 <span style="color: ${timeColor}; font-weight: bold;">${elapsedTime}ms</span>
+                  <span style="color: #666; margin-left: 4px;">${speedTip}</span>
+              `;
+          }
+
+          const initialDelay = Math.max(0, totalLoaderDuration - elapsedTime);
+
+          console.log(`Page loaded in ${elapsedTime}ms. Applying initial delay: ${initialDelay}ms.`);
+
+          // --- Start Loader Sequence after initial delay ---
+          setTimeout(() => {
+              console.log("Initial delay ended. Starting loader sequence.");
+
+              // Show spinner and greeting
+              if (spinner) spinner.style.opacity = '1'; // Ensure spinner is visible
+              // Show spinner and greeting immediately
+              if (spinner) spinner.style.opacity = '1';
+              if (loaderMessage) {
+                  loaderMessage.textContent = greeting;
+                  loaderMessage.style.display = 'block';
+                  void loaderMessage.offsetWidth; // Force reflow for transition
+                  loaderMessage.classList.add('visible');
+                  console.log(`Spinner and greeting shown: "${greeting}"`);
+              }
+
+              // Schedule phase change after greetingDuration (relative to sequence start)
+              setTimeout(() => {
+                  console.log("Greeting duration ended. Switching to 'Ready' message.");
+                  // Hide greeting
+              if (loaderMessage) {
+                  // 1. Start the flip out by adding the 'flipping' class
+                  loaderMessage.classList.add('flipping');
+
+                  // 2. Wait for half the flip duration, then change text and flip back
+                  //    Flip duration is 0.6s (from CSS transition), so wait 300ms.
+                  setTimeout(() => {
+                      loaderMessage.textContent = "叮！页面准备好啦~✨"; // Cute final message
+                      // 3. Remove 'flipping' class to trigger the flip back animation
+                      loaderMessage.classList.remove('flipping');
+                      console.log("Message flipped to 'Ready'.");
+                  }, flipDuration / 2); // Wait half the flip duration
+              }
+              }, greetingDuration); // Timeout relative to sequence start
+
+              // Schedule end of loader after totalLoaderDuration (relative to sequence start)
+              setTimeout(() => {
+                  console.log("Total loader duration ended. Hiding loader, showing content.");
+                  // Hide spinner and "Ready" message
+                  if (spinner) {
+                      // Apply transition directly here if not in CSS for opacity
+                      spinner.style.transition = `opacity ${fadeDuration}ms ease-in-out`;
+                      spinner.style.opacity = '0';
+                      // Optionally set display:none after fade out
+                      setTimeout(() => { spinner.style.display = 'none'; }, fadeDuration);
+                  }
+                  // Hide the loader message (which now shows "Ready")
+              // Hide the loader message (which now shows "Ready")
+              if (loaderMessage) {
+                  loaderMessage.classList.remove('visible');
+                  // Optionally set display:none after fade out
+                  setTimeout(() => { loaderMessage.style.display = 'none'; }, fadeDuration);
+              }
+
+                  // Hide the entire loader container after a short delay
+                  setTimeout(() => {
+                      if (loader) {
+                          loader.style.transition = `opacity ${fadeDuration}ms ease-in-out`;
+                          loader.style.opacity = '0';
+                      setTimeout(() => {
+                          loader.style.display = 'none';
+                          console.log("Loader hidden.");
+                      }, fadeDuration);
+                      }
+                  }, 100); // Small delay before fading loader container
+
+                  // Show and animate the main content
+                  if (content) {
+                      content.style.display = ''; // Remove inline style
+                      // Trigger content animation slightly after loader starts fading
+                      setTimeout(() => {
+                          content.classList.add('content-visible');
+                          console.log(`Content animation started.`);
+                      }, contentAnimationDelay);
+                  }
+              }, totalLoaderDuration); // Timeout relative to sequence start
+
+          }, initialDelay); // Apply the initial delay before starting the sequence
+      });
+
+      // 添加输入处理代码
+      document.querySelector('.cmd-input-field').addEventListener('keypress', async function(e) {
+          if (e.key === 'Enter' && this.value.trim()) {  // 只在有输入内容时响应
+              const cmdOutput = this.closest('.cmd-block').querySelector('.cmd-output');
+              
+              // 显示输出
+              cmdOutput.style.opacity = '0';
+              cmdOutput.style.display = 'block';
+              await sleep(100);
+              cmdOutput.style.transition = 'opacity 0.3s';
+              cmdOutput.style.opacity = '1';
+              
+              // 清空输入并重新聚焦
+              this.value = '';
+              this.focus();
+          }
+      });
+
+      // 添加到现有 script 标签内
+      document.addEventListener('DOMContentLoaded', function() {
+          const notification = document.querySelector('.notification-bar');
+          const closeBtn = notification.querySelector('.close-btn');
+          
+          // 根据不同时间显示不同的建议
+          function getTimeBasedMessage() {
+              const hour = new Date().getHours();
+              const messages = {
+                  morning: '🌅 早安呀！记得吃早饭哦~ (◍•ᴗ•◍)✨ | 欢迎来到 <span class="highlight-name">轻风BOOM</span> 的小窝',
+                  noon: '🍚 午饭时间到啦！该去恰饭啦~ (≧▽≦)/ | 欢迎来到 <span class="highlight-name">轻风BOOM</span> 的小窝',
+                  afternoon: '☕ 下午要来杯奶茶吗？休息一下吧~ ╰(*°▽°*)╯ | 欢迎来到 <span class="highlight-name">轻风BOOM</span> 的小窝',
+                  evening: '🌙 晚上好呀！要记得早点休息哦~ (｡◕‿◕｡) | 欢迎来到 <span class="highlight-name">轻风BOOM</span> 的小窝',
+                  night: '🌟 这么晚还在看我的小站嘛，要注意休息呀~ (づ｡◕‿‿◕｡)づ | 欢迎来到 <span class="highlight-name">轻风BOOM</span> 的小窝'
+              };
+
+              if (hour >= 5 && hour < 11) return messages.morning;
+              if (hour >= 11 && hour < 14) return messages.noon;
+              if (hour >= 14 && hour < 18) return messages.afternoon;
+              if (hour >= 18 && hour < 23) return messages.evening;
+              return messages.night;
+          }
+
+          // 更新通知栏内容
+          notification.innerHTML = `
+              ${getTimeBasedMessage()}
+              <span class="close-btn">×</span>
+          `;
+
+          // 重新获取关闭按钮（因为我们重新设置了 innerHTML）
+          const newCloseBtn = notification.querySelector('.close-btn');
+          
+          // 关闭通知的函数
+          function closeNotification() {
+              notification.innerHTML = "下次再见啦~ (｡◕‿◕｡)ﾉ♡";
+              setTimeout(() => {
+                  notification.classList.add('closing');
+                  setTimeout(() => {
+                      notification.style.display = 'none';
+                  }, 500);
+              }, 2000);
+          }
+          
+          // 点击关闭按钮
+          newCloseBtn.addEventListener('click', closeNotification);
+      });
+    </script>
+</body>
+</html>
