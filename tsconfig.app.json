@@ -9,7 +9,6 @@
       "@/*": ["./src/*"]
     },
     "baseUrl": ".",
-    "ignoreDeprecations": "6.0",
     "strict": true,
     "jsx": "preserve",
     "resolveJsonModule": true,
